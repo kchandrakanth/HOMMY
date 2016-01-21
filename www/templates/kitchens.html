@@ -1,0 +1,44 @@
+<ion-view view-title="{{lolcation}}">
+    <ion-content>
+        <div class="row filter-nav">
+            <div class="col">
+                <ul>
+                    <li class="filter button" ng-class="filter.quick == true ? 'balanced' : 'button-clear'" ng-click="filterByQuick()">
+                        <i class="fa fa-clock-o"></i> Quick
+                    </li>
+                    <li class="filter button" ng-class="filter.veg == true ? 'balanced' : 'button-clear'" ng-click="filterByVeg()">
+                        <i class="fa fa-leaf"></i> Pure Veg
+                    </li>
+                    <li class="filter button button-clear"><i class="fa fa-star"></i> Ratings</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card chef-card" ng-repeat="chef in chefs | filter:homeFilter" ng-click="getKitchen($index)">
+            <div class="row separator">
+                <div class="col col-25">
+                    <img class="full-image" ng-src="{{chef.logo}}">
+                </div>
+                <div class="col col-75 chef">
+                    <div class="separator">
+                        <h4 class="margin-top">{{chef.name}}</h4>
+                        <div class="small-text lighten">{{chef.cuisines | addarrays}}</div>
+                    </div>
+                    <div class="row clear-padding">
+                        <div class="col col-34 clear-padding font-98"><i
+                                class="fa fa-inr"></i><span> {{chef.price}} for 2 </span></div>
+                        <div class="col col-66 clear-padding ratings">
+                            <div>{{chef.rating}} <i class="fa fa-star {{chef.rating|getRatings}}"></i>
+                                <small class="lighten">{{chef.ratings}} foodies</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col assertive text-center">
+                    10% off on bill
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,36 @@
+<ion-view view-title="{{kitchenName}}">
+  <ion-nav-buttons side="right" ng-hide="changelocationbutton" ng-init="changelocationbutton = true"></ion-nav-buttons>
+  <ion-content>
+    <div class="list card" ng-repeat="dish in dishes">
+      <div class="item item-image">
+        <img ng-src="{{dish.logo}}">
+      </div>
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <div class="col">
+          <i class="ion-android-checkbox-blank" ng-class="dish.veg == true ? 'balanced' : 'assertive'"></i>
+          <span>{{dish.name}}</span>
+        </div>
+      </div>
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <div class="col">
+          <i class="fa fa-inr"></i><span> {{dish.cost}}</span>
+        </div>
+        <div class="col item-action" ng-init="dish.cartCount = 0">
+          <a class="button button-clear ion-ios-minus-outline button-dark" ng-click="decrease($index)" ng-disabled="dish.cartCount == 0 ? true : false"></a>
+          <span>{{dish.cartCount}}</span>
+          <a class="button button-clear button-dark" ng-click="increase($index)">+ Add</a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar align-title="left" class="bar-assertive">
+    <div class="hommy-footer">
+      <button class="button button-clear fa fa-shopping-basket"></button>
+    </div>
+    <h1 class="title"></h1>
+    <div class="buttons" ng-click="doSomething()">
+      <button class="button">Checkout</button>
+    </div>
+  </ion-footer-bar>
+</ion-view>
